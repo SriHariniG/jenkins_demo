@@ -3,6 +3,7 @@ package com.example.icl.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import com.example.icl.service.UsersService;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin("*")
 public class UserController {
 
 	@Autowired
@@ -26,6 +28,7 @@ public class UserController {
 
 	@PostMapping("/save")
 	public Users create(@RequestBody Users user) {
+		user.setPassword("abc");
 		return usersService.createUser(user);
 	}
 
